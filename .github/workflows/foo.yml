@@ -1,0 +1,19 @@
+name: dump payload
+on:
+    workflow_run:
+      workflows:
+        - echo cron
+      types:
+        - completed
+      branches:
+        - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: payload
+        run: echo ${{ github.event.workflow_run }}
+      - name: fail
+        if: ${{ github.event.workflow_run.conclusion != 'success' }}
+        run: exit 1
