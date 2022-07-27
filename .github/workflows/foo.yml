@@ -15,7 +15,7 @@ jobs:
       - name: payload
         env:
             EVENT_CONTEXT: ${{ toJson(github.event) }}
-        run: 
+        run: |
             echo '```json' >> $GITHUB_STEP_SUMMARY
             echo "\n" >> $GITHUB_STEP_SUMMARY
             echo $EVENT_CONTEXT >> $GITHUB_STEP_SUMMARY
